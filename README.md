@@ -40,20 +40,51 @@ Enhanced Grunt configuration that extends the original with:
 
 ### Installation
 
-1. Copy these files to your BuddyPress plugin root:
+**IMPORTANT:** These files must be placed in the BuddyPress plugin root directory (where `bp-loader.php` is located).
+
+1. Navigate to your BuddyPress plugin root:
 ```bash
+cd /path/to/wp-content/plugins/buddypress
+```
+
+2. Copy the build files to the root:
+```bash
+# If you have the release-cycle folder
 cp release-cycle/build-complete.sh ./
 cp release-cycle/Gruntfile-enhanced.js ./
+
+# Or download directly from GitHub
+wget https://github.com/YOUR-REPO/release-cycle/build-complete.sh
+wget https://github.com/YOUR-REPO/release-cycle/Gruntfile-enhanced.js
+
+# Make the script executable
 chmod +x build-complete.sh
 ```
 
-2. Install the compression dependency:
+3. Install the compression dependency:
 ```bash
 npm install grunt-contrib-compress --save-dev
 ```
 
+### Directory Structure
+
+Your BuddyPress root should look like this:
+```
+buddypress/
+├── src/                      # Source files
+├── build/                    # Created by build process
+├── node_modules/             # npm dependencies
+├── bp-loader.php             # Main plugin file
+├── package.json              # npm configuration
+├── Gruntfile.js              # Original Gruntfile
+├── Gruntfile-enhanced.js     # ← Add this file here
+├── build-complete.sh         # ← Add this file here
+└── ...
+```
+
 ### Running the Build
 
+From the BuddyPress root directory:
 ```bash
 sudo ./build-complete.sh
 ```
